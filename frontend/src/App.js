@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logos/logo3.svg';
 import './App.css';
+import Post from './components/Post'
 
 class App extends Component {
   render() {
@@ -12,13 +13,7 @@ class App extends Component {
         </header>
         <div className="App-posts">
           <h2 className="posts-title">Posts</h2>
-          <header>
-            <h3 class="abstract-title" itemprop="headline"><a href="https://doncoco.es/">Lorem ipsum dolor</a></h3>
-          </header>
-          {/*  ahutor and date here */}
-          <p className="post-intro">
-            First post, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+          <Post/>
         </div>
       </div>
     );
