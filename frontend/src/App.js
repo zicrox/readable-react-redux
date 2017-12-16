@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logos/logo3.svg';
 import './App.css';
-import Post from './components/Post'
+import Post from './components/Post';
+import apiCalls from './apiCalls';
+
 
 class App extends Component {
+  state = {posts: []}
+  
+  componentDidMount(){
+    apiCalls.getPosts().then((posts) => {
+      console.log('posts:', posts);
+      this.setState({posts: posts});
+    });
+  }
+  
   render() {
     return (
       <div className="App">
@@ -13,7 +24,7 @@ class App extends Component {
         </header>
         <div className="App-posts">
           <h2 className="posts-title">Posts</h2>
-          <Post/>
+          {this.state.posts.map((post) => <Post key={post.id} post={post}/>)}
         </div>
       </div>
     );
