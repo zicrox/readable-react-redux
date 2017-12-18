@@ -1,32 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logos/logo3.svg';
+import React from 'react';
 import './App.css';
-import Post from './components/Post';
-import apiCalls from './apiCalls';
+import { Provider } from 'react-redux';
+import Navigator from './Navigator';
+import store from './configureStore';
 
 
-class App extends Component {
-  state = {posts: []}
-  
-  componentDidMount(){
-    apiCalls.getPosts().then((posts) => {
-      console.log('posts:', posts);
-      this.setState({posts: posts});
-    });
-  }
-  
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">My discussion blog</h1>
-        </header>
-        <div className="App-posts">
-          <h2 className="posts-title">Posts</h2>
-          {this.state.posts.map((post) => <Post key={post.id} post={post}/>)}
-        </div>
-      </div>
+      <Provider store={store}>
+        <Navigator/>
+      </Provider>
     );
   }
 }
