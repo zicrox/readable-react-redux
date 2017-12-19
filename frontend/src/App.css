@@ -49,3 +49,37 @@
   color: grey;
 }
 
+.create-post {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #E8F9FC;
+}
+
+.create-post-title {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1em;
+}
+
+.create-post-title input {
+  margin-left: 1em;
+  width: 70%;
+}
+
+.create-post-body {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.create-post-body textarea {
+  height: 15em;
+  margin: 1em;
+}
+
+.create-post-body button {
+  height: 2em;
+  margin: 1em;
+}
+

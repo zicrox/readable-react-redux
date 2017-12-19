@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './containers/Home';
-import CreatePost from './containers/CreatePost';
+import { Home, CreatePost } from './containers';
 import './App.css';
 
 

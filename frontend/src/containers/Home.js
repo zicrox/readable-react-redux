@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import ReactLoading from 'react-loading';
 import Ionicon from 'react-ionicons'
-import Post from '../components/Post';
-import logo from '../logos/logo3.svg';
+import { HeaderMain, Post } from '../components';
 import { postActions } from '../entities/post';
 
 
@@ -17,10 +16,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">My discussion blog</h1>
-        </header>
+        <HeaderMain/>
         <section className="App-posts">
           <header className="posts-header">
             <Link to="/">
