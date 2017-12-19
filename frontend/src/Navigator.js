@@ -2,17 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Post from './components/Post';
 import logo from './logos/logo3.svg';
-import apiCalls from './apiCalls';
 import { postActions } from './entities/post';
 
 
 class Navigator extends React.Component {
   
   componentDidMount(){
-    apiCalls.getPosts().then((posts) => {
-      console.log('posts:', posts);
-      this.props.dispatch(postActions.setPosts(posts))
-    });
+    this.props.dispatch(postActions.fetchPosts())
   }
   
   render() {
