@@ -1,4 +1,4 @@
 import postReducer from './postReducer';
-// export { postActions } from './postActions';
+import postActions from './postActions';
 
-export { postReducer };
+export { postReducer, postActions };

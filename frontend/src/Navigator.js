@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import Post from './components/Post';
 import logo from './logos/logo3.svg';
 import apiCalls from './apiCalls';
+import { postActions } from './entities/post';
 
 
 class Navigator extends React.Component {
-  state = { posts: [] }
   
   componentDidMount(){
-    console.log(this.props);
     apiCalls.getPosts().then((posts) => {
       console.log('posts:', posts);
-      this.setState({posts: posts});
+      this.props.dispatch(postActions.setPosts(posts))
     });
   }
   
@@ -25,7 +24,7 @@ class Navigator extends React.Component {
         </header>
         <div className="App-posts">
           <h2 className="posts-title">Posts</h2>
-          {this.state.posts.map((post) => <Post key={post.id} post={post}/>)}
+          {this.props.post.map((post) => <Post key={post.id} post={post}/>)}
         </div>
       </div>
     );
