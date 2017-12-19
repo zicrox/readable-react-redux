@@ -1,10 +1,12 @@
-import { SET_POSTS } from './postTypes';
+import { SET_POSTS, FETCH_POSTS, ERROR_POSTS } from './postTypes';
 
-const initState = [];
+const initState = { error: false, fetched: false, posts: [] };
 
 export default (state = initState, action = {}) => {
   const reducerSwitch = {
-    [SET_POSTS]: action.payload,
+    [SET_POSTS]  : { ...state, fetched: true, posts: action.payload },
+    [FETCH_POSTS]: { ...state, fetched: false, posts: [] },
+    [ERROR_POSTS]: { ...state, error: true, posts: [] }
   };
   return reducerSwitch[action.type] || state;
 };
