@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import ReactLoading from 'react-loading';
 import Ionicon from 'react-ionicons'
-import Post from './components/Post';
-import logo from './logos/logo3.svg';
-import { postActions } from './entities/post';
+import Post from '../components/Post';
+import logo from '../logos/logo3.svg';
+import { postActions } from '../entities/post';
 
 
-class Navigator extends React.Component {
+class Home extends React.Component {
   
   componentDidMount(){
     this.props.dispatch(postActions.fetchPosts())
@@ -22,13 +23,13 @@ class Navigator extends React.Component {
         </header>
         <section className="App-posts">
           <header className="posts-header">
-            <a href="">
+            <Link to="/">
               <Ionicon icon="md-home" fontSize="45px" color="#4aa2f2"/>
-            </a>
+            </Link>
             <h2 className="posts-title">Posts</h2>
-            <a href="">
+            <Link to="/createPost">
               <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
-            </a>
+            </Link>
           </header>
           {this.props.postsFetched &&
            this.props.posts.map((post) => <Post key={post.id} post={post}/>)}
@@ -55,4 +56,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Navigator);
+export default connect(mapStateToProps)(Home);
