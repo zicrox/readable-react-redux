@@ -23,6 +23,13 @@
   color: #4aa2f2;
 }
 
+.posts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1a5099;
+}
+
 .App-posts {
   display: flex;
   flex-direction: column;

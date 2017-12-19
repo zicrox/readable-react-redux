@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
+import Ionicon from 'react-ionicons'
 import Post from './components/Post';
 import logo from './logos/logo3.svg';
 import { postActions } from './entities/post';
@@ -19,8 +20,16 @@ class Navigator extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">My discussion blog</h1>
         </header>
-        <div className="App-posts">
-          <h2 className="posts-title">Posts</h2>
+        <section className="App-posts">
+          <header className="posts-header">
+            <a href="">
+              <Ionicon icon="md-home" fontSize="45px" color="#4aa2f2"/>
+            </a>
+            <h2 className="posts-title">Posts</h2>
+            <a href="">
+              <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
+            </a>
+          </header>
           {this.props.postsFetched &&
            this.props.posts.map((post) => <Post key={post.id} post={post}/>)}
           {!this.props.postsFetched && !this.props.postsError &&
@@ -30,10 +39,9 @@ class Navigator extends React.Component {
             </div>}
           {this.props.postsError &&
             <div>
-              <ReactLoading type="bars" color="#4aa2f2" />
               <span> Connection error</span>
             </div>}
-        </div>
+        </section>
       </div>
     );
   }
