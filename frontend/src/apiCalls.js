@@ -12,9 +12,21 @@ const headers = {
 }
 
 export default class InAppBilling {
-  static getPosts = (bookId) =>
+  static getPosts = () =>
     fetch(`${api}/posts`, { headers })
       .then(res => res.json())
-      .then(data => data)
+      .then(data => data);
+      
+  static addPost = (post) =>
+    fetch(`${api}/posts`, {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    })
+      .then(res => res.json())
+      .then(data => data);
 }
 

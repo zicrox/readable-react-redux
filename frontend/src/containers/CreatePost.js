@@ -1,8 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { postActions } from '../entities/post';
 import { HeaderMain } from '../components';
 
 
-export default class CreatePost extends React.Component {
+class CreatePost extends React.Component {
+  
+  clickButton = (bookId) => {
+    console.log("Try to addPost");
+    const postData = {
+      "id": "9xf0y6ziyjabvozdd253nd",
+      "timestamp": 1467166872888,
+    	"title": "React is good",
+    	"body": "Yea everyone says so after all.",
+    	"author": "thingtwo",
+    	"category": "react",
+    }
+    this.props.dispatch(postActions.addPost(postData))
+  }
   
   render() {
     return (
@@ -15,9 +30,11 @@ export default class CreatePost extends React.Component {
         <div className="create-post-body">
           <span>Body</span>
           <textarea></textarea>
-          <button>Submit</button>
+          <button onClick={this.clickButton}>Submit</button>
         </div>
       </div>
     );
   }
 }
+
+export default connect()(CreatePost);
