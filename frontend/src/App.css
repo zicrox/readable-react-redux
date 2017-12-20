@@ -8,6 +8,7 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40px;
+  padding: 10px;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
@@ -16,11 +17,26 @@
 
 .App-header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #CAF5B3;
   padding: 10px;
   color: #4aa2f2;
+}
+
+.App-posts {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #4aa2f2;
+    margin: 1em 0;
+    padding: 0;
 }
 
 .posts-header {
@@ -30,22 +46,11 @@
   color: #1a5099;
 }
 
-.App-posts {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-}
-
-.posts-title {
-  font-size: 1.5em;
-  text-align: center;
-}
-
 .post-intro {
   text-align: justify;
 }
 
-.post-author {
+.post-metadata {
   color: grey;
 }
 
@@ -57,12 +62,17 @@
 }
 
 .create-post-title {
+  text-align: center;
+  color: #1a5099;
+}
+
+.create-post-input {
   display: flex;
   justify-content: flex-start;
   margin: 1em;
 }
 
-.create-post-title input {
+.create-post-input input {
   margin-left: 1em;
   width: 70%;
 }

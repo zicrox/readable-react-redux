@@ -22,7 +22,7 @@ class Home extends React.Component {
             <Link to="/">
               <Ionicon icon="md-home" fontSize="45px" color="#4aa2f2"/>
             </Link>
-            <h2 className="posts-title">Posts</h2>
+            <h2>Posts</h2>
             <Link to="/createPost">
               <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
             </Link>

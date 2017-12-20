@@ -12,8 +12,8 @@ export default class App extends React.Component {
           <Route exact path="/" render={() => (
             <Home/>
           )}/>
-          <Route exact path="/createPost" render={() => (
-            <CreatePost/>
+          <Route exact path="/createPost" render={({history}) => (
+            <CreatePost history={history}/>
           )}/>
         </Switch>
       </BrowserRouter>

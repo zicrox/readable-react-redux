@@ -8,6 +8,7 @@ export default () => (
     <Link to="/">
       <img src={logo} className="App-logo" alt="logo" />
     </Link>
-    <h1 className="App-title">My discussion blog</h1>
+    <h1>My discussion blog</h1>
+    <div></div>
   </header>
 );
