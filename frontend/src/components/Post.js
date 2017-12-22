@@ -5,7 +5,7 @@ export default (props) => (
     <header>
       <h3><a href="">{props.post.title}</a></h3>
       <span className="post-metadata">
-        By: {props.post.author}
+        By: {props.post.author} Category: {props.post.category}
       </span>
     </header>
     <p className="post-intro">{props.post.body}</p>

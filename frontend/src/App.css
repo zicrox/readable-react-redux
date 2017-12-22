@@ -76,6 +76,9 @@ hr {
   margin-left: 1em;
   width: 70%;
 }
+.create-post-input select {
+  margin-left: 1em;
+}
 
 .create-post-body {
   display: flex;
