@@ -12,10 +12,15 @@ const headers = {
 }
 
 export default class InAppBilling {
-  static getPosts = () =>
+  static fetchPosts = () =>
     fetch(`${api}/posts`, { headers })
       .then(res => res.json())
       .then(data => data);
+      
+  static fetchCategories = () =>
+    fetch(`${api}/categories`, { headers })
+      .then(res => res.json())
+      .then(data => data.categories);
       
   static addPost = (post) =>
     fetch(`${api}/posts`, {

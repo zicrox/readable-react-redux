@@ -9,12 +9,12 @@ class CreatePost extends React.Component {
     title: "",
     author: "",
     body: "",
-    categories: ['react', 'redux', 'udacity'],
-    category: 'react'
+    category: "react"
   };
   
-  // TODO add dropdown with categories
-  // https://github.com/fraserxu/react-dropdown
+  componentDidMount(){
+    this.props.dispatch(postActions.fetchCategories());
+  }
   
   onSubmit = (bookId) => {
     const genId = () => (
@@ -59,8 +59,8 @@ class CreatePost extends React.Component {
         <div className="create-post-input">
           <span>Category</span>
           <select value={this.state.category} onChange={(event) => this.setState({category: event.target.value})}>
-            {this.state.categories.map((category) => (
-              <option key={category} value={category}>{category}</option>
+            {this.props.categories.map((category) => (
+              <option key={category.path} value={category.name}>{category.name}</option>
             ))}
           </select>
         </div>
@@ -79,4 +79,10 @@ class CreatePost extends React.Component {
   }
 }
 
-export default connect()(CreatePost);
+function mapStateToProps(state) {
+  return {
+    categories: state.post.categories
+  };
+}
+
+export default connect(mapStateToProps)(CreatePost);
