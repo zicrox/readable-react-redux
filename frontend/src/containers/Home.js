@@ -1,20 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 import ReactLoading from 'react-loading';
-import Ionicon from 'react-ionicons'
-import { HeaderMain, Post } from '../components';
+import { HeaderMain, HeaderPosts, Post } from '../components';
 import { postActions } from '../entities/post';
 
 
 class Home extends React.Component {
+  state = {
+    headerPostsTitle: "Latest posts"
+  }
   
   componentDidMount(){
     this.props.dispatch(postActions.fetchPosts());
     this.props.categories.length === 0 &&
     this.props.dispatch(postActions.fetchCategories());
+    
     // Test action only call: fetchPostsByCategory
     this.props.dispatch(postActions.fetchPostsByCategory('redux'));
+    
+    // Get category from path
+    const pathSplited = this.props.history.location.pathname.split('/');
+    if(pathSplited.length > 2){
+      this.setState({ headerPostsTitle: pathSplited[1] });
+    }
   }
   
   render() {
@@ -22,15 +30,7 @@ class Home extends React.Component {
       <div className="App">
         <HeaderMain/>
         <section className="App-posts">
-          <header className="posts-header">
-            <Link to="/">
-              <Ionicon icon="md-home" fontSize="45px" color="#4aa2f2"/>
-            </Link>
-            <h2>Posts</h2>
-            <Link to="/createPost">
-              <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
-            </Link>
-          </header>
+          <HeaderPosts title={this.state.headerPostsTitle}/>
           {/*  TODO categories header*/}
           {/* <Link to="/createPost">
             <span>react</span>
