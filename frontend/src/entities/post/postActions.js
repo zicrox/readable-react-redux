@@ -4,6 +4,8 @@ import {
   FETCH_POSTS_ERROR,
   FETCH_CATEGORIES_DONE,
   FETCH_CATEGORIES_ERROR,
+  FETCH_POST_BY_CATEGORY_DONE,
+  FETCH_POST_BY_CATEGORY_ERROR,
   ADD_POSTS_DONE,
   ADD_POSTS_ERROR
 } from './postTypes';
@@ -13,7 +15,6 @@ import apiCalls from '../../apiCalls';
 // Redux actions object to export
 const actions = {};
 
-// Fetch post 
 actions.fetchPosts = () => ((dispatch) => {
   dispatch({type: FETCH_POSTS_START})
   apiCalls.fetchPosts()
@@ -25,7 +26,6 @@ actions.fetchPosts = () => ((dispatch) => {
     })
 });
 
-// Fetch categories
 actions.fetchCategories = () => ((dispatch) => {
   apiCalls.fetchCategories()
     .then((posts) => {
@@ -36,7 +36,16 @@ actions.fetchCategories = () => ((dispatch) => {
     })
 });
 
-// Add post
+actions.fetchPostsByCategory = (category) => ((dispatch) => {
+  apiCalls.fetchPostsByCategory(category)
+    .then((posts) => {
+      dispatch({type: FETCH_POST_BY_CATEGORY_DONE, payload: posts})
+    })
+    .catch((err) =>{
+      dispatch({type: FETCH_POST_BY_CATEGORY_ERROR, payload: err})
+    })
+});
+
 actions.addPost = (post) => ((dispatch) => {
   apiCalls.addPost(post)
     .then((post) => {

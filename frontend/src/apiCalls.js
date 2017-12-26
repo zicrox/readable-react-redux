@@ -11,6 +11,11 @@ const headers = {
   'Authorization': token
 }
 
+const headersToPost = {
+  ...headers,
+  'Content-Type': 'application/json'
+}
+
 export default class InAppBilling {
   static fetchPosts = () =>
     fetch(`${api}/posts`, { headers })
@@ -22,13 +27,15 @@ export default class InAppBilling {
       .then(res => res.json())
       .then(data => data.categories);
       
+  static fetchPostsByCategory = (category) =>
+    fetch(`${api}/${category}/posts`, { headers })
+      .then(res => res.json())
+      .then(data => data);
+      
   static addPost = (post) =>
     fetch(`${api}/posts`, {
       method: 'POST',
-      headers: {
-        ...headers,
-        'Content-Type': 'application/json'
-      },
+      headers: headersToPost,
       body: JSON.stringify(post)
     })
       .then(res => res.json())

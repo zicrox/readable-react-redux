@@ -10,7 +10,11 @@ import { postActions } from '../entities/post';
 class Home extends React.Component {
   
   componentDidMount(){
-    this.props.dispatch(postActions.fetchPosts())
+    this.props.dispatch(postActions.fetchPosts());
+    this.props.categories.length === 0 &&
+    this.props.dispatch(postActions.fetchCategories());
+    // Test action only call: fetchPostsByCategory
+    this.props.dispatch(postActions.fetchPostsByCategory('redux'));
   }
   
   render() {
@@ -27,6 +31,10 @@ class Home extends React.Component {
               <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
             </Link>
           </header>
+          {/*  TODO categories header*/}
+          {/* <Link to="/createPost">
+            <span>react</span>
+          </Link> */}
           {this.props.postsFetched &&
            this.props.posts.map((post) => <Post key={post.id} post={post}/>)}
           {!this.props.postsFetched && !this.props.postsError &&
@@ -47,8 +55,9 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     posts  : state.post.posts,
-    postsFetched  : state.post.fetched,
-    postsError  : state.post.error
+    postsFetched  : state.post.postsFetched,
+    postsError  : state.post.postsError,
+    categories: state.post.categories
   };
 }
 
