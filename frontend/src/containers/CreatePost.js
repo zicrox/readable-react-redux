@@ -14,7 +14,7 @@ class CreatePost extends React.Component {
   
   componentDidMount(){
     this.props.categories.length === 0 &&
-    this.props.dispatch(postActions.fetchCategories());
+      this.props.dispatch(postActions.fetchCategories());
   }
   
   onSubmit = (bookId) => {

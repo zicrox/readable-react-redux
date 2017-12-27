@@ -13,15 +13,25 @@ class Home extends React.Component {
   componentDidMount(){
     this.props.dispatch(postActions.fetchPosts());
     this.props.categories.length === 0 &&
-    this.props.dispatch(postActions.fetchCategories());
+      this.props.dispatch(postActions.fetchCategories());
     
     // Test action only call: fetchPostsByCategory
     this.props.dispatch(postActions.fetchPostsByCategory('redux'));
     
-    // Get category from path
-    const pathSplited = this.props.history.location.pathname.split('/');
-    if(pathSplited.length > 2){
-      this.setState({ headerPostsTitle: pathSplited[1] });
+  }
+  
+  componentWillReceiveProps(nextProps){
+    // categories received
+    if(nextProps.categories.length > 0){
+      const pathSplited = this.props.history.location.pathname.split('/');
+      // path with categories
+      if(pathSplited.length > 2){
+        const categoryFromPath = pathSplited[1];
+        // valid category in path
+        if(nextProps.categories.find((cat)=>cat.path === categoryFromPath)){
+          this.setState({ headerPostsTitle: categoryFromPath });
+        }
+      }
     }
   }
   
