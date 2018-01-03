@@ -11,12 +11,15 @@ class Home extends React.Component {
   }
   
   componentDidMount(){
-    this.props.dispatch(postActions.fetchPosts());
+    // fetchPosts if path it´s empty
+    if(this.props.history.location.pathname === '/'){
+      this.props.dispatch(postActions.fetchPosts());
+    }
     this.props.categories.length === 0 &&
       this.props.dispatch(postActions.fetchCategories());
     
     // Test action only call: fetchPostsByCategory
-    this.props.dispatch(postActions.fetchPostsByCategory('redux'));
+    // this.props.dispatch(postActions.fetchPostsByCategory('redux'));
     
   }
   
@@ -30,7 +33,11 @@ class Home extends React.Component {
         // valid category in path
         if(nextProps.categories.find((cat)=>cat.path === categoryFromPath)){
           this.setState({ headerPostsTitle: categoryFromPath });
+          this.props.dispatch(postActions.fetchPostsByCategory(categoryFromPath));
         }
+        // If not fetchPosts or error
+        // change the error control to the fetchCategories action
+        // TODO change error control general only if this matters
       }
     }
   }
