@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ReactLoading from 'react-loading';
-import { HeaderMain, HeaderPosts, Post } from '../components';
+import { HeaderMain, HeaderPosts, Posts } from '../components';
 import { postActions } from '../entities/post';
 
 
@@ -12,9 +11,9 @@ class Home extends React.Component {
   
   componentDidMount(){
     // fetchPosts if path it´s empty
-    if(this.props.history.location.pathname === '/'){
+    this.props.history.location.pathname === '/' &&
       this.props.dispatch(postActions.fetchPosts());
-    }
+      
     this.props.categories.length === 0 &&
       this.props.dispatch(postActions.fetchCategories());
     
@@ -52,17 +51,9 @@ class Home extends React.Component {
           {/* <Link to="/createPost">
             <span>react</span>
           </Link> */}
-          {this.props.postsFetched &&
-           this.props.posts.map((post) => <Post key={post.id} post={post}/>)}
-          {!this.props.postsFetched && !this.props.postsError &&
-            <div>
-              <ReactLoading type="bars" color="#4aa2f2" />
-              <span> Loading...</span>
-            </div>}
-          {this.props.postsError &&
-            <div>
-              <span> Connection error</span>
-            </div>}
+            
+          <Posts posts={this.props.posts} postsFetched={this.props.postsFetched} postsError={this.props.postsError}/>
+            
         </section>
       </div>
     );
