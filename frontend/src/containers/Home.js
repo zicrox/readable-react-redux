@@ -23,8 +23,8 @@ class Home extends React.Component {
   }
   
   componentWillReceiveProps(nextProps){
-    // categories received
-    if(nextProps.categories.length > 0){
+    // categories received && postsByCategory is empty
+    if(nextProps.categories.length > 0 && nextProps.postsByCategory.length === 0){
       const pathSplited = this.props.history.location.pathname.split('/');
       // path with categories
       if(pathSplited.length > 2){
@@ -52,7 +52,12 @@ class Home extends React.Component {
             <span>react</span>
           </Link> */}
             
-          <Posts posts={this.props.posts} postsFetched={this.props.postsFetched} postsError={this.props.postsError}/>
+          <Posts 
+            posts={this.props.posts}
+            postsFetched={this.props.postsFetched}
+            postsError={this.props.postsError}
+            postsByCategory={this.props.postsByCategory}
+          />
             
         </section>
       </div>
@@ -65,7 +70,8 @@ function mapStateToProps(state) {
     posts  : state.post.posts,
     postsFetched  : state.post.postsFetched,
     postsError  : state.post.postsError,
-    categories: state.post.categories
+    categories: state.post.categories,
+    postsByCategory: state.post.postsByCategory
   };
 }
 
