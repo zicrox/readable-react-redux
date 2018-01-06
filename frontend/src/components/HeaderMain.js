@@ -9,6 +9,5 @@ export default () => (
       <img src={logo} className="App-logo" alt="logo" />
     </Link>
     <h1>My discussion blog</h1>
-    <div></div>
   </header>
 );

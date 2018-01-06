@@ -12,7 +12,7 @@ export default (props) => (
     <p className="post-intro">{props.post.body}</p>
     <span className="post-metadata">
       {(new Date(props.post.timestamp)).toISOString().slice(0,10).replace(/-/g,"/")+", "}
-      <Link to="/createPost">
+      <Link to={`/${props.post.category}/posts`}>
         {props.post.category}
       </Link>
     </span>
