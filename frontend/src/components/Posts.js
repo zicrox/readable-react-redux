@@ -5,8 +5,6 @@ import ReactLoading from 'react-loading';
 
 export default (props) => (
   <div>
-    {console.log("props")}
-    {console.log(props)}
     {
       // FETCH_POSTS has response status (postsFetched and postsError)
       props.postsFetched && 

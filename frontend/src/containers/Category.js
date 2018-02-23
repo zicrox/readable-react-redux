@@ -17,7 +17,7 @@ class Category extends React.Component {
   
   componentWillReceiveProps(nextProps){
     // categories received && postsByCategory is empty
-    if(nextProps.categories.length > 0 && nextProps.postsByCategory.length === 0){
+    if(nextProps.categories.length > 0){
       const pathSplited = this.props.history.location.pathname.split('/');
       // path with categories
       if(pathSplited.length > 2){
@@ -25,7 +25,10 @@ class Category extends React.Component {
         // valid category in path
         if(nextProps.categories.find((cat)=>cat.path === categoryFromPath)){
           this.setState({ headerPostsTitle: categoryFromPath });
-          this.props.dispatch(postActions.fetchPostsByCategory(categoryFromPath));
+          // postsByCategory empty or posts of diferent category 
+          if(nextProps.postsByCategory.length === 0 || categoryFromPath !== nextProps.postsByCategory[0].category){
+            this.props.dispatch(postActions.fetchPostsByCategory(categoryFromPath));
+          }
         }
         // If not fetchPosts or error
         // change the error control to the fetchCategories action
