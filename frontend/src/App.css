@@ -22,6 +22,7 @@
   background-color: #CAF5B3;
   padding: 10px;
   color: #4aa2f2;
+  font-family: Audiowide;
 }
 
 .App-posts {
@@ -44,6 +45,7 @@ hr {
   align-items: center;
   justify-content: space-between;
   color: #1a5099;
+  font-family: Audiowide;
 }
 
 .post-intro {
