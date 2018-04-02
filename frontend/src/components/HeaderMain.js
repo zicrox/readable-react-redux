@@ -1,16 +1,55 @@
 import React from 'react';
-import logo from '../logos/logo2.svg';
 import { Link } from 'react-router-dom'
+import Ionicon from 'react-ionicons'
+import logo from '../logos/logo2.svg';
 
+const Header = (props) => {
+  return (
+    <React.Fragment>
+      <header className="App-header">
+        <Ionicon icon="md-list" fontSize="45px" color="#1a5099" onClick={() => props.onDropdownCategories()}/>
+        <h1>My discussion blog</h1>
+        <Link to="/">
+          <img src={logo} className="App-logo" alt="logo" />
+        </Link>
+      </header>
+      {props.showDropdownCategories && <DropdownCategories categories={props.categories} />}
+    </React.Fragment>
+  )
+};
 
-export default () => (
-  <header className="App-header">
-    <Link to="/">
-      <img src={logo} className="App-logo" alt="logo" />
-    </Link>
-    <h1>My discussion blog</h1>
-    <Link to="/">
-      <img src={logo} className="App-logo" alt="logo" />
-    </Link>
-  </header>
+const DropdownCategories = (props) => (
+  <nav className="App-categories">
+    <ul>
+      {props.categories.map((category) => (
+        <li key={category.path}>
+          <Link to={`/${category.path}/posts`}>
+            {category.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </nav>
 );
+
+class HeaderMain extends React.Component {
+  state = {
+    showDropdownCategories: false
+  }
+  dropdownCategories = () => {
+    this.setState((prevState) => ({
+      showDropdownCategories: !prevState.showDropdownCategories
+    }));
+  }
+  render(){
+    return (
+      <Header 
+        onDropdownCategories={this.dropdownCategories}
+        showDropdownCategories={this.state.showDropdownCategories}
+        categories={this.props.categories}
+      />
+    )
+  }
+}
+
+export default HeaderMain;

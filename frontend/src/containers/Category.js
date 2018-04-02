@@ -44,14 +44,9 @@ class Category extends React.Component {
   render() {
     return (
       <div className="App">
-        <HeaderMain/>
+        <HeaderMain categories={this.props.categories}/>
         <section className="App-posts">
           <HeaderPosts title={this.state.headerPostsTitle}/>
-          {/*  TODO categories header*/}
-          {/* <Link to="/createPost">
-            <span>react</span>
-          </Link> */}
-            
           <Posts 
             postsByCategory={this.props.postsByCategory}
           />

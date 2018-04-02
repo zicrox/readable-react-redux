@@ -37,7 +37,7 @@ class CreatePost extends React.Component {
   render() {
     return (
       <div className="create-post">
-        <HeaderMain/>
+        <HeaderMain categories={this.props.categories}/>
         <h2 className="create-post-title">Create post</h2>
         <div className="create-post-input">
           <span>Title</span>
