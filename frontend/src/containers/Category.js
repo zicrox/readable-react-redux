@@ -25,7 +25,7 @@ class Category extends React.Component {
   conditionsPostsByCategory = (propsToCheck) => {
     // categories received && postsByCategory is empty
     if(propsToCheck.categories.length > 0){
-      const pathSplited = this.props.history.location.pathname.split('/');
+      const pathSplited = propsToCheck.location.pathname.split('/');
       // path with categories
       if(pathSplited.length > 2){
         const categoryFromPath = pathSplited[1];

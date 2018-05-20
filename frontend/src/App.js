@@ -9,11 +9,11 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={({history}) => (
-            <Home history={history}/>
+          <Route exact path="/" render={() => (
+            <Home/>
           )}/>
-          <Route exact path="/:category/posts" render={({history}) => (
-            <Category history={history}/>
+          <Route exact path="/:category/posts" render={({location}) => (
+            <Category location={location}/>
           )}/>
           <Route exact path="/createPost" render={({history}) => (
             <CreatePost history={history}/>
@@ -23,3 +23,9 @@ export default class App extends React.Component {
     );
   }
 }
+
+/*  
+<Route> tip: !!The history object is mutable¡¡. Therefore it is recommended to access the location
+from the render props of <Route>, not from history.location. This ensures your assumptions about
+React are correct in lifecycle hooks. (e.g.: "componentWillReceiveProps" it will work correctly on path changes). 
+*/
