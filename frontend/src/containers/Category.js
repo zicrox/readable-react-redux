@@ -8,6 +8,8 @@ class Category extends React.Component {
   state = {
     headerPostsTitle: "Latest posts"
   }
+  // Class var when we do not want affect to render flow
+  lastCategory = "";
   
   componentDidMount(){
     // if not have categories: fetch
@@ -33,7 +35,8 @@ class Category extends React.Component {
         if(propsToCheck.categories.find((cat)=>cat.path === categoryFromPath)){
           this.setState({ headerPostsTitle: categoryFromPath });
           // postsByCategory empty or posts of diferent category 
-          if(propsToCheck.postsByCategory.length === 0 || categoryFromPath !== propsToCheck.postsByCategory[0].category){
+          if(categoryFromPath !== this.lastCategory){
+            this.lastCategory = categoryFromPath;
             this.props.dispatch(postActions.fetchPostsByCategory(categoryFromPath));
           }
         }

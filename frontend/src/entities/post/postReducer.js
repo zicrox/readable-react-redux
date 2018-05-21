@@ -20,9 +20,9 @@ export default (state = initState, action = {}) => {
     [FETCH_POSTS_DONE] : { ...state, postsFetched: true, posts: action.payload },
     [FETCH_POSTS_ERROR] : { ...state, postsError: true, posts: [] },
     
-    [FETCH_CATEGORIES_DONE] : { ...state, fetched: true, categories: action.payload },
+    [FETCH_CATEGORIES_DONE] : { ...state, categories: action.payload },
     
-    [FETCH_POST_BY_CATEGORY_DONE] : { ...state, fetched: true, postsByCategory: action.payload },
+    [FETCH_POST_BY_CATEGORY_DONE] : { ...state, postsByCategory: action.payload },
   };
   return reducerSwitch[action.type] || state;
 };
