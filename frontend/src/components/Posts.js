@@ -6,26 +6,26 @@ import ReactLoading from 'react-loading';
 export default (props) => (
   <div>
     {
-      // FETCH_POSTS has response status (postsFetched and postsError)
+      // FETCH_POSTS has response status (postsFetched)
       props.postsFetched && 
         props.posts.map((post) => <Post key={post.id} post={post}/>)
     }
     {
-      // FETCH_POSTS_BY_CATEGORY has not response status so check the array length 
-      props.postsByCategory && props.postsByCategory.length !== 0 && 
+      // FETCH_POSTS_BY_CATEGORY has response status (postsByCategoryFetched)
+      props.postsByCategoryFetched &&
         props.postsByCategory.map((post) => <Post key={post.id} post={post}/>)
     }
     
-    {/* Loadings and errors mesages */}  
     {
-      ((!props.postsByCategory && !props.postsFetched && !props.postsError) || 
-      (!props.postsFetched && props.postsByCategory && props.postsByCategory.length === 0)) &&
+      // Loading
+      (!props.postsFetched && !props.postsByCategoryFetched && !props.postsError) &&
         <div>
           <ReactLoading type="bars" color="#4aa2f2" />
           <span> Loading...</span>
         </div>
     }
     {
+      // Error message
       props.postsError &&
         <div>
           <span> Connection error</span>

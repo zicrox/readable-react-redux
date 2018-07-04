@@ -9,6 +9,7 @@ import {
 const initState = {
   postsError: false,
   postsFetched: false,
+  postsByCategoryFetched: false,
   posts: [],
   categories: [],
   postsByCategory: []
@@ -22,7 +23,7 @@ export default (state = initState, action = {}) => {
     
     [FETCH_CATEGORIES_DONE] : { ...state, categories: action.payload },
     
-    [FETCH_POST_BY_CATEGORY_DONE] : { ...state, postsByCategory: action.payload },
+    [FETCH_POST_BY_CATEGORY_DONE] : { ...state, postsByCategoryFetched: true, postsByCategory: action.payload }
   };
   return reducerSwitch[action.type] || state;
 };

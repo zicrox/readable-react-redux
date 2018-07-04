@@ -10,7 +10,8 @@ const reducers = combineReducers({
   post: postReducer
 });
 // Redux: middleware
-const middleware = applyMiddleware(thunk, createLogger());
+// Useful redux-logger options: {diff: true} (show state diff)
+const middleware = applyMiddleware(thunk, createLogger({diff: false}));
 // Redux: create our store
 const store = createStore(reducers, middleware);
 

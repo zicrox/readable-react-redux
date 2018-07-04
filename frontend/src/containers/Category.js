@@ -52,6 +52,7 @@ class Category extends React.Component {
           <HeaderPosts title={this.state.headerPostsTitle}/>
           <Posts 
             postsByCategory={this.props.postsByCategory}
+            postsByCategoryFetched={this.props.postsByCategoryFetched}
           />
             
         </section>
@@ -63,7 +64,8 @@ class Category extends React.Component {
 function mapStateToProps(state) {
   return {
     categories: state.post.categories,
-    postsByCategory: state.post.postsByCategory
+    postsByCategory: state.post.postsByCategory,
+    postsByCategoryFetched: state.post.postsByCategoryFetched
   };
 }
 

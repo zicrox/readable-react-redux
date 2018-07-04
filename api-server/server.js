@@ -13,7 +13,7 @@ const app = express()
 
 app.use(express.static('public'))
 app.use(cors())
-app.use(morgan('dev')); // log every request to the console
+app.use(morgan('dev')) // log every request to the console
 
 
 app.get('/', (req, res) => {
