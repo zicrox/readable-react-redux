@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import ReactLoading from 'react-loading';
 
-
+// Note: this components manage fetch status: fetched, loading, error
 export default (props) => (
   <div>
     {

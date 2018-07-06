@@ -31,7 +31,7 @@ class CreatePost extends React.Component {
     	"category": this.state.category,
     }
     this.props.dispatch(postActions.addPost(postData));
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
   
   render() {

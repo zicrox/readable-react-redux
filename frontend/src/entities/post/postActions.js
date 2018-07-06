@@ -2,6 +2,8 @@ import {
   FETCH_POSTS_START,
   FETCH_POSTS_DONE,
   FETCH_POSTS_ERROR,
+  FETCH_POST_BY_ID_DONE,
+  FETCH_POST_BY_ID_ERROR,
   FETCH_CATEGORIES_DONE,
   FETCH_CATEGORIES_ERROR,
   FETCH_POST_BY_CATEGORY_DONE,
@@ -23,6 +25,16 @@ actions.fetchPosts = () => ((dispatch) => {
     })
     .catch((err) =>{
       dispatch({type: FETCH_POSTS_ERROR, payload: err})
+    })
+});
+
+actions.fetchPostById = (id) => ((dispatch) => {
+  apiCalls.fetchPostById(id)
+    .then((post) => {
+      dispatch({type: FETCH_POST_BY_ID_DONE, payload: post})
+    })
+    .catch((err) =>{
+      dispatch({type: FETCH_POST_BY_ID_ERROR, payload: err})
     })
 });
 

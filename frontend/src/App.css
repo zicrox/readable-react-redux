@@ -58,6 +58,11 @@ hr {
   font-family: Audiowide;
 }
 
+.posts-detail-header {
+  color: #1a5099;
+  font-family: Audiowide;
+}
+
 .post-intro {
   text-align: justify;
 }

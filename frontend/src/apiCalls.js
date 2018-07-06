@@ -22,6 +22,11 @@ export default class InAppBilling {
       .then(res => res.json())
       .then(data => data);
       
+  static fetchPostById = (id) =>
+    fetch(`${api}/posts/${id}`, { headers })
+      .then(res => res.json())
+      .then(data => data);
+      
   static fetchCategories = () =>
     fetch(`${api}/categories`, { headers })
       .then(res => res.json())
