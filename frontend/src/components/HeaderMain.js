@@ -21,6 +21,11 @@ const Header = (props) => {
 const DropdownCategories = (props) => (
   <nav className="App-categories">
     <ul>
+      <li key="Home">
+        <Link to="/">
+          Home
+        </Link>
+      </li>
       {props.categories.map((category) => (
         <li key={category.path}>
           <Link to={`/${category.path}/posts`}>

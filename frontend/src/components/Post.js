@@ -5,7 +5,7 @@ export default (props) => (
   <div>
     <header>
       <h3>
-        <Link to={`posts/${props.post.id}`}>
+        <Link to={`/posts/${props.post.id}`}>
           {props.post.title}
         </Link>
       </h3>
