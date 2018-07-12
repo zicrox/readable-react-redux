@@ -71,3 +71,14 @@ actions.addPost = (post) => ((dispatch) => {
 });
 
 export default actions;
+
+// ** With Async await (I prefer "then catch")
+// actions.fetchPosts = () => (async (dispatch) => {
+//   dispatch({type: FETCH_POSTS_START})
+//   try {
+//     const posts = await apiCalls.fetchPosts();
+//     dispatch({type: FETCH_POSTS_DONE, payload: posts});
+//   } catch (err) {
+//     dispatch({type: FETCH_POSTS_ERROR, payload: err})
+//   }
+// });

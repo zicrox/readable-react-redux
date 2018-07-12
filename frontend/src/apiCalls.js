@@ -47,3 +47,6 @@ export default class InAppBilling {
       .then(data => data);
 }
 
+// ** With Async await (less expresive... I prefer two "then")
+// static fetchPosts = async () =>
+//   await (await fetch(`${api}/posts`, { headers })).json()
