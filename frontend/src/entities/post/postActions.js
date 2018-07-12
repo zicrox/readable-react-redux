@@ -2,6 +2,7 @@ import {
   FETCH_POSTS_START,
   FETCH_POSTS_DONE,
   FETCH_POSTS_ERROR,
+  FETCH_POST_BY_ID_START,
   FETCH_POST_BY_ID_DONE,
   FETCH_POST_BY_ID_ERROR,
   FETCH_CATEGORIES_DONE,
@@ -29,6 +30,7 @@ actions.fetchPosts = () => ((dispatch) => {
 });
 
 actions.fetchPostById = (id) => ((dispatch) => {
+  dispatch({type: FETCH_POST_BY_ID_START})
   apiCalls.fetchPostById(id)
     .then((post) => {
       dispatch({type: FETCH_POST_BY_ID_DONE, payload: post})
