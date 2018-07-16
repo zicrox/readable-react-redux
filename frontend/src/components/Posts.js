@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 
 // Note: this components manage fetch status: fetched, loading, error
 export default (props) => (
-  <div>
+  <React.Fragment>
     {
       // FETCH_POSTS has response status (postsFetched)
       props.postsFetched && 
@@ -31,5 +31,5 @@ export default (props) => (
           <span> Connection error</span>
         </div>
     }
-  </div>
+  </React.Fragment>
 );

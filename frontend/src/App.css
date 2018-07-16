@@ -71,6 +71,23 @@ hr {
   color: grey;
 }
 
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-like {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-like svg {
+  margin-bottom: 8px;
+  margin-left: 5px;
+}
+
 .create-post {
   display: flex;
   flex-direction: column;
