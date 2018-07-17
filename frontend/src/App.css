@@ -41,15 +41,6 @@
   padding: 1em;
 }
 
-hr {
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 2px solid #4aa2f2;
-    margin: 1em 0;
-    padding: 0;
-}
-
 .posts-header {
   display: flex;
   align-items: center;
@@ -130,3 +121,19 @@ hr {
   margin: 1em;
 }
 
+/*  GLOBALS */
+/*  Separator */
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #4aa2f2;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*  Links */
+a {
+  text-decoration: none;
+  color: #4aa2f2;
+}

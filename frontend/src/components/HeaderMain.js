@@ -8,9 +8,12 @@ const Header = (props) => {
     <React.Fragment>
       <header className="App-header">
         <Ionicon icon="md-list" fontSize="45px" color="#1a5099" onClick={() => props.onDropdownCategories()}/>
-        <h1>My discussion blog</h1>
+        <Link to="/">
+          <h1>My discussion blog</h1>
+        </Link>
         <Link to="/">
           <img src={logo} className="App-logo" alt="logo" />
+          {/* <Ionicon className="App-logo" icon="md-home" fontSize="45px" color="#4aa2f2"/> */}
         </Link>
       </header>
       {props.showDropdownCategories && <DropdownCategories categories={props.categories} />}
