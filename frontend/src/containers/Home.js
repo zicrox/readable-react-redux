@@ -22,6 +22,7 @@ class Home extends React.Component {
             posts={this.props.posts}
             postsFetched={this.props.postsFetched}
             postsError={this.props.postsError}
+            sortMethod={"voteScoreDown"}
           />
             
         </section>

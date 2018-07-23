@@ -25,7 +25,7 @@ const DropdownCategories = (props) => (
     <ul>
       <li key="Home">
         <Link to="/">
-          home
+          Home
         </Link>
       </li>
       {props.categories.map((category) => (
