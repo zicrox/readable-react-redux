@@ -49,7 +49,7 @@ class HeaderPosts extends React.Component {
     }));
   }
   setTitleSortMethod = (titleSortMethod) => {
-    console.log(titleSortMethod);
+    this.props.onchangeSortMethod(titleSortMethod);
     this.setState(() => ({
       titleSortMethod: titleSortMethod
     }));

@@ -16,7 +16,8 @@ const initState = {
   posts: [],
   categories: [],
   postsByCategory: [],
-  postDetail: {}
+  postDetail: {},
+  sortMethod: false
 };
 
 export default (state = initState, action = {}) => {

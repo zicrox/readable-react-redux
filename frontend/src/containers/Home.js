@@ -12,17 +12,21 @@ class Home extends React.Component {
       this.props.dispatch(postActions.fetchCategories());
   }
   
+  changeSortMethod = (titleSortMethod) => {
+    console.log(titleSortMethod);
+  }
+  
   render() {
     return (
       <div className="App">
         <HeaderMain categories={this.props.categories}/>
         <section className="App-posts">
-          <HeaderPosts title="Latest posts"/>
+          <HeaderPosts title="Latest posts" onchangeSortMethod={this.changeSortMethod} />
           <Posts 
             posts={this.props.posts}
             postsFetched={this.props.postsFetched}
             postsError={this.props.postsError}
-            sortMethod={"voteScoreDown"}
+            sortMethod={this.props.sortMethod}
           />
             
         </section>
@@ -33,10 +37,11 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    posts  : state.post.posts,
+    posts         : state.post.posts,
     postsFetched  : state.post.postsFetched,
-    postsError  : state.post.postsError,
-    categories: state.post.categories,
+    postsError    : state.post.postsError,
+    categories    : state.post.categories,
+    sortMethod    : state.post.sortMethod,
   };
 }
 
