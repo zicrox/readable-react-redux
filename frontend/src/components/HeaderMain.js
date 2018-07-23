@@ -3,30 +3,29 @@ import { Link } from 'react-router-dom'
 import Ionicon from 'react-ionicons'
 import logo from '../logos/logo2.svg';
 
-const Header = (props) => {
-  return (
-    <React.Fragment>
-      <header className="App-header">
-        <Ionicon icon="md-list" fontSize="45px" color="#1a5099" onClick={() => props.onDropdownCategories()}/>
-        <Link to="/">
-          <h1>My discussion blog</h1>
-        </Link>
-        <Link to="/">
-          <img src={logo} className="App-logo" alt="logo" />
-          {/* <Ionicon className="App-logo" icon="md-home" fontSize="45px" color="#4aa2f2"/> */}
-        </Link>
-      </header>
-      {props.showDropdownCategories && <DropdownCategories categories={props.categories} />}
-    </React.Fragment>
-  )
-};
+const Header = (props) => (
+  <React.Fragment>
+    <header className="App-header">
+      <Ionicon icon="md-list" fontSize="45px" color="#1a5099" onClick={() => props.onDropdownCategories()}/>
+      <Link to="/">
+        <h1>My discussion blog</h1>
+      </Link>
+      <Link to="/">
+        <img src={logo} className="App-logo" alt="logo" />
+        {/* <Ionicon className="App-logo" icon="md-home" fontSize="45px" color="#4aa2f2"/> */}
+      </Link>
+    </header>
+    {props.showDropdownCategories && <DropdownCategories categories={props.categories} />}
+  </React.Fragment>
+);
 
 const DropdownCategories = (props) => (
   <nav className="App-categories">
+    <h3>Categories</h3>
     <ul>
       <li key="Home">
         <Link to="/">
-          Home
+          home
         </Link>
       </li>
       {props.categories.map((category) => (

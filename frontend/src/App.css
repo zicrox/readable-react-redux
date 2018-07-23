@@ -35,6 +35,11 @@
   font-family: Audiowide;
 }
 
+.App-categories h3{
+  margin-left: 10px;
+  color: #1a5099;
+}
+
 .App-posts {
   display: flex;
   flex-direction: column;
@@ -47,6 +52,15 @@
   justify-content: space-between;
   color: #1a5099;
   font-family: Audiowide;
+}
+
+.posts-header span {
+  color: grey;
+  font-family: sans-serif;
+}
+
+.posts-header h2 {
+  margin-bottom: 0px;
 }
 
 .posts-detail-header {
