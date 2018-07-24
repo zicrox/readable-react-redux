@@ -12,8 +12,8 @@ class Home extends React.Component {
       this.props.dispatch(postActions.fetchCategories());
   }
   
-  changeSortMethod = (titleSortMethod) => {
-    console.log(titleSortMethod);
+  changeSortMethod = (sortMethod) => {
+    this.props.dispatch(postActions.setSortMethod(sortMethod));
   }
   
   render() {
@@ -21,7 +21,11 @@ class Home extends React.Component {
       <div className="App">
         <HeaderMain categories={this.props.categories}/>
         <section className="App-posts">
-          <HeaderPosts title="Latest posts" onchangeSortMethod={this.changeSortMethod} />
+          <HeaderPosts 
+            title="Latest posts"
+            sortMethod={this.props.sortMethod}
+            onchangeSortMethod={this.changeSortMethod}
+          />
           <Posts 
             posts={this.props.posts}
             postsFetched={this.props.postsFetched}

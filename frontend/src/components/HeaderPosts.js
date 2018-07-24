@@ -15,7 +15,7 @@ const Header = (props) => (
         <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
       </Link>
     </header>
-    {props.showDropdownFilters && <DropdownSortMethods filters={props.filters} onSetTitleSortMethod={props.onSetTitleSortMethod} />}
+    {props.showDropdownSortMethos && <DropdownSortMethods sortMethods={props.sortMethods} onSetTitleSortMethod={props.onSetTitleSortMethod} />}
   </React.Fragment>
 );
 
@@ -23,10 +23,10 @@ const DropdownSortMethods = (props) => (
   <nav className="App-categories">
     <h3>Sort by</h3>
     <ul>
-      {props.filters.map((filter) => (
-        <li key={filter.path}>
-          <span onClick={() => props.onSetTitleSortMethod(filter.name)}>
-            {filter.name}
+      {props.sortMethods.map((sortMethod) => (
+        <li key={sortMethod.key}>
+          <span onClick={() => props.onSetTitleSortMethod(sortMethod)}>
+            {sortMethod.name}
           </span>
         </li>
       ))}
@@ -36,33 +36,29 @@ const DropdownSortMethods = (props) => (
 
 class HeaderPosts extends React.Component {
   state = {
-    showDropdownFilters: false,
-    titleSortMethod: false
+    showDropdownSortMethos: false,
   }
-  filters = [
-    {name: "Vote score", path: "voteScore"},
-    {name: "Date", path: "date"}
+  sortMethods = [
+    {name: "Vote score", key: "voteScoreUp"},
+    {name: "Date", key: "dateUp"}
   ]
   dropdownSortMethods = () => {
     this.setState((prevState) => ({
-      showDropdownFilters: !prevState.showDropdownFilters
+      showDropdownSortMethos: !prevState.showDropdownSortMethos
     }));
   }
-  setTitleSortMethod = (titleSortMethod) => {
-    this.props.onchangeSortMethod(titleSortMethod);
-    this.setState(() => ({
-      titleSortMethod: titleSortMethod
-    }));
+  setTitleSortMethod = (sortMethod) => {
+    this.props.onchangeSortMethod(sortMethod);
   }
   render(){
     return (
       <Header 
         onDropdownSortMethods={this.dropdownSortMethods}
         onSetTitleSortMethod={this.setTitleSortMethod}
-        showDropdownFilters={this.state.showDropdownFilters}
-        filters={this.filters}
+        showDropdownSortMethos={this.state.showDropdownSortMethos}
+        sortMethods={this.sortMethods}
         title={this.props.title}
-        titleSortMethod={this.state.titleSortMethod}
+        titleSortMethod={this.props.sortMethod.name}
       />
     )
   }

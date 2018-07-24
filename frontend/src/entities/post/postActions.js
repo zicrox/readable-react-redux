@@ -10,7 +10,8 @@ import {
   FETCH_POST_BY_CATEGORY_DONE,
   FETCH_POST_BY_CATEGORY_ERROR,
   ADD_POSTS_DONE,
-  ADD_POSTS_ERROR
+  ADD_POSTS_ERROR,
+  SET_SORT_METHOD,
 } from './postTypes';
 // Methods to use the api server
 import apiCalls from '../../apiCalls';
@@ -18,6 +19,7 @@ import apiCalls from '../../apiCalls';
 // Redux actions object to export
 const actions = {};
 
+// 
 actions.fetchPosts = () => ((dispatch) => {
   dispatch({type: FETCH_POSTS_START})
   apiCalls.fetchPosts()
@@ -69,6 +71,9 @@ actions.addPost = (post) => ((dispatch) => {
       dispatch({type: ADD_POSTS_ERROR, payload: err})
     })
 });
+
+// Sync actions creators
+actions.setSortMethod = (sortMethod) => ({type: SET_SORT_METHOD, payload: sortMethod});
 
 export default actions;
 

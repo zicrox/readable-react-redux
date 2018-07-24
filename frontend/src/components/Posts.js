@@ -10,7 +10,7 @@ export default (props) => {
     voteScoreDown : (a,b) => a.voteScore - b.voteScore,
     dateUp        : (a,b) => b.timestamp - a.timestamp,
     dateDown      : (a,b) => a.timestamp - b.timestamp
-  }[props.sortMethod]
+  }[props.sortMethod.key]
   
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ export default (props) => {
       {
         // FETCH_POSTS_BY_CATEGORY has response status (postsByCategoryFetched)
         props.postsByCategoryFetched &&
-          props.postsByCategory.map((post) => <Post key={post.id} post={post}/>)
+          props.postsByCategory.sort(sortMethod).map((post) => <Post key={post.id} post={post}/>)
       }
       
       {

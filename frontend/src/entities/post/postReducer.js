@@ -6,6 +6,7 @@ import {
   FETCH_POST_BY_ID_DONE,
   FETCH_CATEGORIES_DONE,
   FETCH_POST_BY_CATEGORY_DONE,
+  SET_SORT_METHOD,
 } from './postTypes';
 
 const initState = {
@@ -17,7 +18,7 @@ const initState = {
   categories: [],
   postsByCategory: [],
   postDetail: {},
-  sortMethod: false
+  sortMethod: {}
 };
 
 export default (state = initState, action = {}) => {
@@ -31,7 +32,9 @@ export default (state = initState, action = {}) => {
     
     [FETCH_CATEGORIES_DONE] : { ...state, categories: action.payload },
     
-    [FETCH_POST_BY_CATEGORY_DONE] : { ...state, postsByCategoryFetched: true, postsByCategory: action.payload }
+    [FETCH_POST_BY_CATEGORY_DONE] : { ...state, postsByCategoryFetched: true, postsByCategory: action.payload },
+    
+    [SET_SORT_METHOD] : { ...state, sortMethod: action.payload },
     
   };
   return reducerSwitch[action.type] || state;

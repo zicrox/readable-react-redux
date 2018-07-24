@@ -24,9 +24,15 @@ class Category extends React.Component {
     this.conditionsPostsByCategory(nextProps);
   }
   
+  changeSortMethod = (sortMethod) => {
+    this.props.dispatch(postActions.setSortMethod(sortMethod));
+  }
+  
+  // NOTE this function can be simple if clear the state before fectch (FETCH_POST_BY_CATEGORY)
   conditionsPostsByCategory = (propsToCheck) => {
     // categories received && postsByCategory is empty
     if(propsToCheck.categories.length > 0){
+      // TODO use MATCH property in location
       const pathSplited = propsToCheck.location.pathname.split('/');
       // path with categories
       if(pathSplited.length > 2){
@@ -49,10 +55,15 @@ class Category extends React.Component {
       <div className="App">
         <HeaderMain categories={this.props.categories}/>
         <section className="App-posts">
-          <HeaderPosts title={this.state.headerPostsTitle}/>
+          <HeaderPosts 
+            title={this.state.headerPostsTitle}
+            sortMethod={this.props.sortMethod}
+            onchangeSortMethod={this.changeSortMethod}
+          />
           <Posts 
             postsByCategory={this.props.postsByCategory}
             postsByCategoryFetched={this.props.postsByCategoryFetched}
+            sortMethod={this.props.sortMethod}
           />
             
         </section>
@@ -63,9 +74,10 @@ class Category extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    categories: state.post.categories,
-    postsByCategory: state.post.postsByCategory,
-    postsByCategoryFetched: state.post.postsByCategoryFetched
+    categories             : state.post.categories,
+    postsByCategory        : state.post.postsByCategory,
+    postsByCategoryFetched : state.post.postsByCategoryFetched,
+    sortMethod             : state.post.sortMethod,
   };
 }
 
