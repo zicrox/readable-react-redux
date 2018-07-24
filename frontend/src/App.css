@@ -59,13 +59,15 @@
   font-family: sans-serif;
 }
 
-.posts-header h2 {
-  margin-bottom: 0px;
-}
-
 .posts-detail-header {
   color: #1a5099;
   font-family: Audiowide;
+}
+
+.post-header-up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .post-intro {
@@ -90,7 +92,8 @@
 
 .post-like svg {
   margin-bottom: 8px;
-  margin-left: 5px;
+  margin-left: 20px;
+  margin-right: 5px;
 }
 
 .create-post {

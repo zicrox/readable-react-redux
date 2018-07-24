@@ -5,11 +5,16 @@ import Ionicon from 'react-ionicons'
 export default (props) => (
   <div>
     <header>
-      <h3>
-        <Link to={`/posts/${props.post.id}`}>
-          {props.post.title}
+      <div className="post-header-up">
+        <h3>
+          <Link to={`/posts/${props.post.id}`}>
+            {props.post.title}
+          </Link>
+        </h3>
+        <Link to="/edit-post">
+          <Ionicon icon="md-hammer" fontSize="25px" color="#4aa2f2"/>
         </Link>
-      </h3>
+      </div>
       <span className="post-metadata">
         By: {props.post.author}
       </span>
@@ -26,8 +31,10 @@ export default (props) => (
         </Link>
       </span>
       <span className="post-like">
-        {props.post.voteScore}
+        <Ionicon icon="ios-chatbubbles" fontSize="25px" color="#1a5099"/>
+        {props.post.commentCount}
         <Ionicon icon="md-thumbs-up" fontSize="25px" color="#1a5099"/>
+        {props.post.voteScore}
       </span>
     </footer>
     <hr/>

@@ -11,7 +11,7 @@ const Header = (props) => (
         <h2>{props.title}</h2>
         {props.titleSortMethod && <span>Fliter by: {props.titleSortMethod}</span>}
       </div>
-      <Link to="/createPost">
+      <Link to="/create-post">
         <Ionicon icon="ios-create" fontSize="45px" color="#4aa2f2"/>
       </Link>
     </header>
