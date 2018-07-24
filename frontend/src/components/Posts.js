@@ -10,19 +10,22 @@ export default (props) => {
     voteScoreDown : (a,b) => a.voteScore - b.voteScore,
     dateUp        : (a,b) => b.timestamp - a.timestamp,
     dateDown      : (a,b) => a.timestamp - b.timestamp
-  }[props.sortMethod.key]
+  }[props.sortMethod.key];
+  
+  // Render optimization: Avoid arrow functions and bind inside 
+  const renderPost = (post) => <Post key={post.id} post={post}/>
   
   return (
     <React.Fragment>
       {
         // FETCH_POSTS has response status (postsFetched)
         props.postsFetched && 
-          props.posts.sort(sortMethod).map((post) => <Post key={post.id} post={post}/>)
+          props.posts.sort(sortMethod).map(renderPost)
       }
       {
         // FETCH_POSTS_BY_CATEGORY has response status (postsByCategoryFetched)
         props.postsByCategoryFetched &&
-          props.postsByCategory.sort(sortMethod).map((post) => <Post key={post.id} post={post}/>)
+          props.postsByCategory.sort(sortMethod).map(renderPost)
       }
       
       {

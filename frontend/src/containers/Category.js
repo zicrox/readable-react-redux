@@ -58,7 +58,7 @@ class Category extends React.Component {
           <HeaderPosts 
             title={this.state.headerPostsTitle}
             sortMethod={this.props.sortMethod}
-            onchangeSortMethod={this.changeSortMethod}
+            onChangeSortMethod={this.changeSortMethod}
           />
           <Posts 
             postsByCategory={this.props.postsByCategory}

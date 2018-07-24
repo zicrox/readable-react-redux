@@ -6,7 +6,7 @@ import Ionicon from 'react-ionicons'
 const Header = (props) => (
   <React.Fragment>
     <header className="posts-header">
-      <Ionicon icon="ios-stats" fontSize="45px" color="#4aa2f2" onClick={() => props.onDropdownSortMethods()}/>
+      <Ionicon icon="ios-stats" fontSize="45px" color="#4aa2f2" onClick={props.onDropdownSortMethods}/>
       <div>
         <h2>{props.title}</h2>
         {props.titleSortMethod && <span>Fliter by: {props.titleSortMethod}</span>}
@@ -48,7 +48,7 @@ class HeaderPosts extends React.Component {
     }));
   }
   setTitleSortMethod = (sortMethod) => {
-    this.props.onchangeSortMethod(sortMethod);
+    this.props.onChangeSortMethod(sortMethod);
   }
   render(){
     return (

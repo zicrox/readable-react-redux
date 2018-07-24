@@ -24,7 +24,7 @@ class Home extends React.Component {
           <HeaderPosts 
             title="Latest posts"
             sortMethod={this.props.sortMethod}
-            onchangeSortMethod={this.changeSortMethod}
+            onChangeSortMethod={this.changeSortMethod}
           />
           <Posts 
             posts={this.props.posts}
