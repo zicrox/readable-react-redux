@@ -6,7 +6,7 @@ import logo from '../logos/logo2.svg';
 const Header = (props) => (
   <React.Fragment>
     <header className="App-header">
-      <Ionicon icon="md-list" fontSize="45px" color="#1a5099" onClick={() => props.onDropdownCategories()}/>
+      <Ionicon icon="md-list" fontSize="45px" color="#1a5099" onClick={props.onDropdownCategories}/>
       <Link to="/">
         <h1>My discussion blog</h1>
       </Link>

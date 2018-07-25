@@ -18,11 +18,11 @@ export default class App extends React.Component {
           <Route exact path="/:category/posts" render={({location}) => (
             <Category location={location}/>
           )}/>
-          <Route exact path="/create-post" render={({history}) => (
-            <CreatePost history={history}/>
+          <Route exact path="/create-post" render={({history, match}) => (
+            <CreatePost history={history} match={match}/>
           )}/>
-          <Route exact path="/edit-post" render={({history}) => (
-            <CreatePost history={history}/>
+          <Route exact path="/edit-post/:id" render={({history, match}) => (
+            <CreatePost history={history} match={match}/>
           )}/>
         </Switch>
       </BrowserRouter>

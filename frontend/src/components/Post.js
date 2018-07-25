@@ -11,7 +11,7 @@ export default (props) => (
             {props.post.title}
           </Link>
         </h3>
-        <Link to="/edit-post">
+        <Link to={`/edit-post/${props.post.id}`}>
           <Ionicon icon="md-hammer" fontSize="25px" color="#4aa2f2"/>
         </Link>
       </div>
