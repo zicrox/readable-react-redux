@@ -12,6 +12,8 @@ import {
   ADD_POSTS_DONE,
   ADD_POSTS_ERROR,
   SET_SORT_METHOD,
+  EDIT_POSTS_DONE,
+  EDIT_POSTS_ERROR,
 } from './postTypes';
 // Methods to use the api server
 import apiCalls from '../../apiCalls';
@@ -69,6 +71,16 @@ actions.addPost = (post) => ((dispatch) => {
     })
     .catch((err) =>{
       dispatch({type: ADD_POSTS_ERROR, payload: err})
+    })
+});
+
+actions.editPost = (post) => ((dispatch) => {
+  apiCalls.editPost(post)
+    .then((post) => {
+      dispatch({type: EDIT_POSTS_DONE, payload: post})
+    })
+    .catch((err) =>{
+      dispatch({type: EDIT_POSTS_ERROR, payload: err})
     })
 });
 

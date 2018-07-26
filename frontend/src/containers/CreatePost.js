@@ -15,21 +15,14 @@ class CreatePost extends React.Component {
   componentDidMount(){
     this.props.categories.length === 0 &&
       this.props.dispatch(postActions.fetchCategories());
+    // Edit Post
     this.props.match.params.id &&
       this.props.dispatch(postActions.fetchPostById(this.props.match.params.id));
   }
   
-  // componentWillReceiveProps(nextProps){
-  //   if(this.props.match.params.id && Object.keys(nextProps.postDetail).length === 0) {
-  //     this.setState({title: this.props.postDetail.title})
-  //   }
-  // }
-  
   componentDidUpdate(prevProps, prevState, snapshot){
-    // Update state from props (postDetail)
+    // Edit Post: Update state from props (postDetail)
     if(this.props.match.params.id && Object.keys(this.props.postDetail).length !== 0 && Object.keys(prevProps.postDetail).length === 0) {
-      console.log(this.props.postDetail.category);
-      console.log(this.props.categories);
       this.setState({
         title    : this.props.postDetail.title,
         body     : this.props.postDetail.body,
@@ -40,19 +33,32 @@ class CreatePost extends React.Component {
   }
   
   submit = (bookId) => {
-    const genId = () => (
-      Math.random().toString(36).substr(2, 9) + 
-      Math.random().toString(36).substr(2, 9)
-    )
-    const postData = {
-      "id"        : genId(),
-      "timestamp" : Date.now(),
-    	"title"     : this.state.title,
-    	"body"      : this.state.body,
-    	"author"    : this.state.author,
-    	"category"  : this.state.category,
+    // Edit Post
+    if (this.props.match.params.id) {
+      const postData = {
+        id        : this.props.postDetail.id,
+        title     : this.state.title,
+        body      : this.state.body,
+        author    : this.state.author,
+        category  : this.state.category,
+      }
+      this.props.dispatch(postActions.editPost(postData));
+    // Add Post
+    } else {
+      const genId = () => (
+        Math.random().toString(36).substr(2, 9) + 
+        Math.random().toString(36).substr(2, 9)
+      )
+      const postData = {
+        id        : genId(),
+        timestamp : Date.now(),
+      	title     : this.state.title,
+      	body      : this.state.body,
+      	author    : this.state.author,
+      	category  : this.state.category,
+      }
+      this.props.dispatch(postActions.addPost(postData));
     }
-    this.props.dispatch(postActions.addPost(postData));
     this.props.history.push('/');
   }
   
@@ -64,7 +70,6 @@ class CreatePost extends React.Component {
     </select>
   );
   
-  // TODO optimize move setState functions out of render
   render() {
     return (
       <div className="create-post">

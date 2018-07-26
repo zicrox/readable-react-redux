@@ -45,6 +45,15 @@ export default class InAppBilling {
     })
       .then(res => res.json())
       .then(data => data);
+      
+  static editPost = (post) =>
+    fetch(`${api}/posts/${post.id}`, {
+      method: 'PUT',
+      headers: headersToPost,
+      body: JSON.stringify(post)
+    })
+      .then(res => res.json())
+      .then(data => data);
 }
 
 // ** With Async await (less expresive... I prefer two "then")
